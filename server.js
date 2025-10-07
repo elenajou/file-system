@@ -4,7 +4,7 @@ const path = require('path');
 const { getDate } = require('./modules/utils');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const URL = import.meta.env['VITE_URL'];
 
 const strings = require('./lang/en.json');
 const GREETING_TEMPLATE = strings.greeting;
@@ -98,9 +98,9 @@ app.get('/getDate', (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+    console.log(`Server is running on port ${URL}.`);
     console.log(`--- Endpoints ---`);
-    console.log(`C.1 Write: http://localhost:${PORT}/writeFile?text=BCIT`);
-    console.log(`C.2 Read:  http://localhost:${PORT}/readFile/file.txt`);
-    console.log(`A.2 Time:  http://localhost:${PORT}/getDate?name=Elena`);
+    console.log(`C.1 Write: ${URL}/writeFile?text=BCIT`);
+    console.log(`C.2 Read:  ${URL}/readFile/file.txt`);
+    console.log(`A.2 Time:  ${URL}/getDate?name=Elena`);
 });
