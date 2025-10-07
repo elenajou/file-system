@@ -1,8 +1,3 @@
-const getDate = () => {
-
+export const getDate = () => {
   return new Date().toString();
-};
-
-module.exports = {
-  getDate
 };

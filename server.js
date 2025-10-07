@@ -1,12 +1,13 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const { getDate } = require('./modules/utils');
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { getDate } from './modules/utils.js';
+import strings from './lang/en.json' with { type: 'json' };
+import 'dotenv/config'; 
 
 const app = express();
-const URL = import.meta.env['VITE_URL'];
+const URL = process.env.VITE_URL;
 
-const strings = require('./lang/en.json');
 const GREETING_TEMPLATE = strings.greeting;
 const TARGET_FILE = 'file.txt';
 
@@ -97,7 +98,7 @@ app.get('/getDate', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+app.listen(URL, () => {
     console.log(`Server is running on port ${URL}.`);
     console.log(`--- Endpoints ---`);
     console.log(`C.1 Write: ${URL}/writeFile?text=BCIT`);
